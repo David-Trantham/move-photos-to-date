@@ -4,4 +4,6 @@
 ## Goals
 [x] Create a functional script
 
-[ ] Add support for counting and displaying the number of items found in the source path before they are moved
+[x] Add support for counting and displaying the number of items found in the source path before they are moved
+
+[x] Add a pause at the end of the script as to not alarm the end user if the command prompt closes suddenly
