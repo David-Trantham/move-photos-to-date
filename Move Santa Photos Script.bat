@@ -7,7 +7,9 @@ echo Scanning.....
 dir %srcpath% /b /a-d | find /c /v ""
 echo Photos have been found within the folder found at: %srcpath% 
 
-set /P "destfolder=Please enter the date for the folder to move the photos to:"
+set /P "destfolder=Please enter the date for the folder to move the photos to, or enter 'p' to view and modify paths.
+if %destfolder% EQU p
+    
 mkdir "%destpath%\%destfolder%"
 move "%srcpath%\*" "%destpath%\%destfolder%\"
 
