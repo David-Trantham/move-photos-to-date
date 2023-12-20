@@ -27,10 +27,11 @@ echo
 echo Destination Path: %destpath%
 echo This should be the folder containing the dated photo folders.
 echo
-Choice /C SDB /M "Please press 'S' to modify the source path, 'D' to modify the destination path, or press 'B' to go back.
+Choice /C SDBE /M "Please press 'S' to modify the source path, 'D' to modify the destination path, press 'B' to go back, or press 'E' to quit.
 IF %ERRORLEVEL% EQU 1 goto update_source
 IF %ERRORLEVEL% EQU 2 goto update_destination
 IF %ERRORLEVEL% EQU 3 goto main & cls
+IF %ERRORLEVEL% EQU 4 exit /b
 
 :update_source
 set /P "srcpath=Please paste or enter the desired source path: "
