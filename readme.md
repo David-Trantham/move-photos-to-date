@@ -13,3 +13,5 @@
 [ ] Create a 'paths' option that opens a menu, which reveals both source and destination paths and allows you to modify one or the other based on your input.
     
     [ ]Also allow the user to navigate backwards through the menu by implementing a 'back' command
+
+[ ] Cute thumbnail??
