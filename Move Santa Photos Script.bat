@@ -1,4 +1,4 @@
-::@echo off
+@echo off
 :main
 echo Scanning.....
 dir %srcpath% /b /a-d | find /c /v ""
@@ -10,8 +10,10 @@ if "%destfolder%" == "p" (goto path_menu)
 if "%destfolder%" == "q" (exit \b)
 ::Need to test, but this should check if destfolder contains only numbers; this is what should activate the rest of the script
 SET "var="&for /f "delims=0123456789-_" %%i in ("%destfolder%") do set "var=%destfolder%"%
-if defined var (echo "Error: Invalid input. Please enter 'p', 'q', or a date." & goto main_prompt)
-::If destfolder is a number or valid symbol...
+if defined var (goto main_prompt)
+if "%srcpath%" == "" (echo Error: Please set a source path, or try closing and re-launching the program.& goto main_prompt)
+if "%destpath%" == "" (echo Error: Please set a destination path, or try closing and re-launching the program.& goto main_prompt)
+::If destfolder is a number or valid symbol, and both paths exist...
 mkdir "%destpath%\%destfolder%"
 move "%srcpath%\*" "%destpath%\%destfolder%\"
 
@@ -26,13 +28,13 @@ IF %ERRORLEVEL% EQU 3 goto main & cls
 :update_source
 set /P "input=Please paste or enter the desired source path: "
 if not exist %input% (echo Error: Path not found. Please enter a valid path. & goto path_menu)
-echo Success! Source path has been updated.
 setx srcpath %input%
+echo Success! Source path has been updated.
 goto path_menu
 
 :update_destination
 set /P "input=Please paste or enter the desired destination path: "
 if not exist %input% (echo Error: Path not found. Please enter a valid path. & goto path_menu)
-echo Success! Destination path has been updated.
 setx destpath %input%
+echo Success! Destination path has been updated.
 goto path_menu
