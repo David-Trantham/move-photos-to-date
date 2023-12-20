@@ -21,13 +21,14 @@ pause
 exit /b
 :path_menu
 ::TODO: Display and explain paths here
+echo.
 echo Source Path: %srcpath%
 echo This should be the folder where photos end up when they are taken.
-echo
+echo.
 echo Destination Path: %destpath%
 echo This should be the folder containing the dated photo folders.
-echo
-Choice /C SDBE /M "Please press 'S' to modify the source path, 'D' to modify the destination path, press 'B' to go back, or press 'E' to quit.
+echo.
+Choice /C SDBQ /M "Please press 'S' to modify the source path, 'D' to modify the destination path, press 'B' to go back, or press 'Q' to quit.
 IF %ERRORLEVEL% EQU 1 goto update_source
 IF %ERRORLEVEL% EQU 2 goto update_destination
 IF %ERRORLEVEL% EQU 3 goto main & cls
