@@ -9,8 +9,8 @@ set /P "destfolder=Please enter the date for the folder to move the photos to, e
 if "%destfolder%" == "p" (goto path_menu)
 if "%destfolder%" == "q" (exit \b)
 ::Need to test, but this should check if destfolder contains only numbers; this is what should activate the rest of the script
-SET "var="&for /f "delims=0123456789-_" %%i in ("%destfolder%") do set "var=%destfolder%"%
-if defined var (goto main_prompt)
+set "var="&for /f "delims=0123456789\/-_" %%i in ("%destfolder%") do set "var=%destfolder%"%
+if defined var (echo Error: Command or Date not recognized.&goto main_prompt)
 if "%srcpath%" == "" (echo Error: Please set a source path, or try closing and re-launching the program.& goto main_prompt)
 if "%destpath%" == "" (echo Error: Please set a destination path, or try closing and re-launching the program.& goto main_prompt)
 ::If destfolder is a number or valid symbol, and both paths exist...
