@@ -31,7 +31,7 @@ echo.
 Choice /C SDBQ /M "Please press 'S' to modify the source path, 'D' to modify the destination path, press 'B' to go back, or press 'Q' to quit.
 IF %ERRORLEVEL% EQU 1 goto update_source
 IF %ERRORLEVEL% EQU 2 goto update_destination
-IF %ERRORLEVEL% EQU 3 goto main & cls
+IF %ERRORLEVEL% EQU 3 cls & goto main
 IF %ERRORLEVEL% EQU 4 exit /b
 
 :update_source
