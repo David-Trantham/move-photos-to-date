@@ -1,6 +1,6 @@
 @echo off
-title "Move Santa Photos Utility"
 :main
+title "Move Santa Photos Utility"
 if "%srcpath%" == "" (echo Error: Please set a source path, or try closing and re-launching the program.& goto path_menu)
 if "%destpath%" == "" (echo Error: Please set a destination path, or try closing and re-launching the program.& goto path_menu)
 echo Scanning.....
