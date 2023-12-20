@@ -1,6 +1,8 @@
 @echo off
 title "Move Santa Photos Utility"
 :main
+if "%srcpath%" == "" (echo Error: Please set a source path, or try closing and re-launching the program.& goto path_menu)
+if "%destpath%" == "" (echo Error: Please set a destination path, or try closing and re-launching the program.& goto path_menu)
 echo Scanning.....
 ::TODO: I don't like that this is potentially calling srcpath before it is set 
 dir %srcpath% /b /a-d | find /c /v ""
@@ -12,8 +14,6 @@ if "%destfolder%" == "p" (goto path_menu)
 if "%destfolder%" == "q" (exit /b)
 set "var="&for /f "delims=0123456789\/-_" %%i in ("%destfolder%") do set "var=%destfolder%"%
 if defined var (echo Error: Command or Date not recognized.&goto main_prompt)
-if "%srcpath%" == "" (echo Error: Please set a source path, or try closing and re-launching the program.& goto main_prompt)
-if "%destpath%" == "" (echo Error: Please set a destination path, or try closing and re-launching the program.& goto main_prompt)
 ::If destfolder is a number or valid symbol, and both paths exist...
 mkdir "%destpath%\%destfolder%"
 move "%srcpath%\*" "%destpath%\%destfolder%\"
