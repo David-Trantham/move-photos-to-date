@@ -46,3 +46,9 @@ if not exist %destpath% (echo Error: Path not found. Please enter a valid path. 
 setx destpath %destpath%
 echo Success! Destination path has been updated. Note that you need to close and re-launch the program to finalize changes.
 goto path_menu
+
+:options
+title "Options..."
+echo Welcome to the options menu!
+Choice /C CUBE /M "Welcome press 'B' to go back, or press 'E' to quit.
+goto main
