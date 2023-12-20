@@ -2,7 +2,7 @@
 title "Move Santa Photos Utility"
 :main
 echo Scanning.....
-::TODO: I don't like that this is is potentially calling srcpath before it is set 
+::TODO: I don't like that this is potentially calling srcpath before it is set 
 dir %srcpath% /b /a-d | find /c /v ""
 echo Photos have been found within the source folder.
 
@@ -21,6 +21,12 @@ pause
 exit /b
 :path_menu
 ::TODO: Display and explain paths here
+echo Source Path: %srcpath%
+echo This should be the folder where photos end up when they are taken.
+echo
+echo Destination Path: %destpath%
+echo This should be the folder containing the dated photo folders.
+echo
 Choice /C SDB /M "Please press 'S' to modify the source path, 'D' to modify the destination path, or press 'B' to go back.
 IF %ERRORLEVEL% EQU 1 goto update_source
 IF %ERRORLEVEL% EQU 2 goto update_destination
