@@ -21,7 +21,7 @@ pause
 exit /b
 :path_menu
 ::TODO: Display and explain paths here
-echo.
+cls
 echo Source Path: %srcpath%
 echo This should be the folder where photos end up when they are taken.
 echo.
@@ -41,6 +41,7 @@ cls
 set "srcpath=%input%"
 setx srcpath %srcpath%
 echo Success! Source path has been updated. Note that you need to close and re-launch the program to finalize changes.
+pause
 goto path_menu
 
 :update_destination
@@ -50,4 +51,5 @@ set "destpath=%input%"
 setx destpath %destpath%
 cls
 echo Success! Destination path has been updated. Note that you need to close and re-launch the program to finalize changes.
+pause
 goto path_menu
