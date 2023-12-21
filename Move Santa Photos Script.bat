@@ -35,15 +35,19 @@ IF %ERRORLEVEL% EQU 3 cls & goto main
 IF %ERRORLEVEL% EQU 4 exit /b
 
 :update_source
-set /P "srcpath=Please paste or enter the desired source path: "
-if not exist %srcpath% (echo Error: Path not found. Please enter a valid path. & goto path_menu)
+set /P "input=Please paste or enter the desired source path: "
+if not exist %input% (echo Error: Path not found. Please enter a valid path. & goto path_menu)
+cls
+set "srcpath=%input%"
 setx srcpath %srcpath%
 echo Success! Source path has been updated. Note that you need to close and re-launch the program to finalize changes.
 goto path_menu
 
 :update_destination
-set /P "destpath=Please paste or enter the desired destination path: "
-if not exist %destpath% (echo Error: Path not found. Please enter a valid path. & goto path_menu)
+set /P "input=Please paste or enter the desired destination path: "
+if not exist %input% (echo Error: Path not found. Please enter a valid path. & goto path_menu)
+set "destpath=%input%"
 setx destpath %destpath%
+cls
 echo Success! Destination path has been updated. Note that you need to close and re-launch the program to finalize changes.
 goto path_menu
