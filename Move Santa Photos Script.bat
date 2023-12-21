@@ -1,16 +1,15 @@
 @echo off
 :main
 title "Move Santa Photos Utility"
-if "%srcpath%" == "" (echo Error: Please set a source path, or try closing and re-launching the program.& goto path_menu)
-if "%destpath%" == "" (echo Error: Please set a destination path, or try closing and re-launching the program.& goto path_menu)
+if "%srcpath%" == "" (echo Error: No source path found. Please set a source path.& goto path_menu)
+if "%destpath%" == "" (echo Error: No destination path found. Please set a destination path.& goto path_menu)
 echo Scanning.....
-::TODO: I don't like that this is potentially calling srcpath before it is set 
 dir %srcpath% /b /a-d | find /c /v ""
 echo Photos have been found within the source folder.
 
 :main_prompt
 set /P "destfolder=Please enter the date for the destination folder, enter 'p' to view and modify paths, or enter 'q' to quit:"
-if "%destfolder%" == "p" (goto path_menu)
+if "%destfolder%" == "p" (cls & goto path_menu)
 if "%destfolder%" == "q" (exit /b)
 set "var="&for /f "delims=0123456789\/-_" %%i in ("%destfolder%") do set "var=%destfolder%"%
 if defined var (cls & echo Error: Command or Date not recognized.&goto main_prompt)
@@ -33,7 +32,7 @@ Choice /C SDOBQ /M "Please press 'S' to modify the source path, 'D' to modify th
 IF %ERRORLEVEL% EQU 1 goto update_source
 IF %ERRORLEVEL% EQU 2 goto update_destination
 IF %ERRORLEVEL% EQU 3 cls & goto open_paths
-IF %ERRORLEVEL% EQU 4 goto main
+IF %ERRORLEVEL% EQU 4 cls & goto main
 IF %ERRORLEVEL% EQU 5 exit /b
 
 :open_paths
@@ -47,7 +46,7 @@ if not exist %input% (echo Error: Path not found. Please enter a valid path. & g
 cls
 set "srcpath=%input%"
 setx srcpath %srcpath%
-echo Success! Source path has been updated. Note that you need to close and re-launch the program to finalize changes.
+echo Success! Source path has been updated.
 goto path_menu
 
 :update_destination
@@ -56,5 +55,5 @@ if not exist %input% (echo Error: Path not found. Please enter a valid path. & g
 set "destpath=%input%"
 setx destpath %destpath%
 cls
-echo Success! Destination path has been updated. Note that you need to close and re-launch the program to finalize changes.
+echo Success! Destination path has been updated.
 goto path_menu
