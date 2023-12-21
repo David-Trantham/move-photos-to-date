@@ -8,10 +8,10 @@
 
 [x] Add a pause at the end of the script as to not alarm the end user if the command prompt closes suddenly
 
-[ ] Reject input that does not include either a date or a command
+[X] Reject input that does not include either a date or a command
 
-[ ] Create a 'paths' option that opens a menu, which reveals both source and destination paths and allows you to modify one or the other based on your input.
+[X] Create a 'paths' option that opens a menu, which reveals both source and destination paths and allows you to modify one or the other based on your input.
     
-    [ ]Also allow the user to navigate backwards through the menu by implementing a 'back' command
+    [X]Also allow the user to navigate backwards through the menu by implementing a 'back' command
 
-[ ] Cute thumbnail??
+[X] Cute thumbnail??

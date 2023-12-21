@@ -9,11 +9,11 @@ dir %srcpath% /b /a-d | find /c /v ""
 echo Photos have been found within the source folder.
 
 :main_prompt
-set /P "destfolder=Please enter the date for the folder to move the photos to, enter 'p' to view and modify paths, or enter 'q' to quit:"
+set /P "destfolder=Please enter the date for the destination folder, enter 'p' to view and modify paths, or enter 'q' to quit:"
 if "%destfolder%" == "p" (goto path_menu)
 if "%destfolder%" == "q" (exit /b)
 set "var="&for /f "delims=0123456789\/-_" %%i in ("%destfolder%") do set "var=%destfolder%"%
-if defined var (echo Error: Command or Date not recognized.&goto main_prompt)
+if defined var (cls & echo Error: Command or Date not recognized.&goto main_prompt)
 ::If destfolder is a number or valid symbol, and both paths exist...
 mkdir "%destpath%\%destfolder%"
 move "%srcpath%\*" "%destpath%\%destfolder%\"
