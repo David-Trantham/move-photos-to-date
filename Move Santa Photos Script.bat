@@ -19,6 +19,7 @@ mkdir "%destpath%\%destfolder%"
 move "%srcpath%\*" "%destpath%\%destfolder%\"
 pause
 exit /b
+
 :path_menu
 ::TODO: Display and explain paths here
 echo.
@@ -28,11 +29,17 @@ echo.
 echo Destination Path: %destpath%
 echo This should be the folder containing the dated photo folders.
 echo.
-Choice /C SDBQ /M "Please press 'S' to modify the source path, 'D' to modify the destination path, press 'B' to go back, or press 'Q' to quit.
+Choice /C SDOBQ /M "Please press 'S' to modify the source path, 'D' to modify the destination path, press 'O' to open the source and destination paths in File Explorer, press 'B' to go back, or press 'Q' to quit.
 IF %ERRORLEVEL% EQU 1 goto update_source
 IF %ERRORLEVEL% EQU 2 goto update_destination
-IF %ERRORLEVEL% EQU 3 cls & goto main
-IF %ERRORLEVEL% EQU 4 exit /b
+IF %ERRORLEVEL% EQU 3 cls & goto open_paths
+IF %ERRORLEVEL% EQU 4 goto main
+IF %ERRORLEVEL% EQU 5 exit /b
+
+:open_paths
+start "" "%srcpath%"
+start "" "%destpath%"
+goto path_menu
 
 :update_source
 set /P "input=Please paste or enter the desired source path: "
