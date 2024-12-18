@@ -1,6 +1,6 @@
 @echo off
 :main
-title "Move Santa Photos Utility"
+title Move Santa Photos Utility
 if "%srcpath%" == "" (echo Error: No source path found. Please set a source path.& goto path_menu)
 if "%destpath%" == "" (echo Error: No destination path found. Please set a destination path.& goto path_menu)
 echo Scanning.....
@@ -8,7 +8,10 @@ dir %srcpath% /b /a-d | find /c /v ""
 echo Photos have been found within the source folder.
 
 :main_prompt
-set /P "destfolder=Please enter the date for the destination folder, enter 'p' to view and modify paths, or enter 'q' to quit:"
+echo Welcome to the Main Menu! Please enter a date for the folder to move photos to. (Example: 12012000 for December 1st, 2000)
+echo
+echo Alternatively, you can enter 'p' to view and modify paths, or enter 'q' to quit.
+set /P "destfolder=Input: "
 if "%destfolder%" == "p" (cls & goto path_menu)
 if "%destfolder%" == "q" (exit /b)
 set "var="&for /f "delims=0123456789\/-_" %%i in ("%destfolder%") do set "var=%destfolder%"%
